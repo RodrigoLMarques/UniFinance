@@ -1,0 +1,40 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+
+
+
+#login-box {
+    margin-top: 120px;
+    max-width: 600px;
+    padding-top: 10px;
+    height: 320px;
+    border: 3px solid #d64933;
+    border-radius: 3px;
+    background-color: #d64933;
+}
+
+#registrar-box {
+    margin-top: 60px;
+    max-width: 600px;
+    padding-top: 10px;
+    height: 480x;
+    border: 3px solid #d64933;
+    border-radius: 3px;
+    background-color: #d64933;
+}
+
+#login-form {
+    padding: 20px;
+}
+
+.form-group {
+    color: white;
+}
+
+#register-link {
+    color: white;
+    float: right;
+}

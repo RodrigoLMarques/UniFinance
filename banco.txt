@@ -1,0 +1,107 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema mydb
+-- -----------------------------------------------------
+-- -----------------------------------------------------
+-- Schema unifinance
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema unifinance
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `unifinance` DEFAULT CHARACTER SET utf8mb4 ;
+USE `unifinance` ;
+
+-- -----------------------------------------------------
+-- Table `unifinance`.`acao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `unifinance`.`acao` (
+  `idAcao` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL DEFAULT NULL,
+  `symbol` VARCHAR(45) NULL DEFAULT NULL,
+  `open` FLOAT NULL DEFAULT NULL,
+  `high` FLOAT NULL DEFAULT NULL,
+  `low` FLOAT NULL DEFAULT NULL,
+  `price` FLOAT NULL DEFAULT NULL,
+  `volume` FLOAT NULL DEFAULT NULL,
+  `previous_close` FLOAT NULL DEFAULT NULL,
+  `change` FLOAT NULL DEFAULT NULL,
+  `change_percent` FLOAT NULL DEFAULT NULL,
+  `company_name` varchar(45) NULL DEFAULT NULL,
+  `document` varchar(45) NULL DEFAULT NULL,
+  `descricao` varchar(45) NULL DEFAULT NULL,
+  `website` varchar(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idAcao`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `unifinance`.`usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `unifinance`.`usuario` (
+  `idUsuario` INT(11) NOT NULL AUTO_INCREMENT,
+  `username` VARCHAR(45) NULL DEFAULT NULL,
+  `email` VARCHAR(45) NULL DEFAULT NULL,
+  `senha` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idUsuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `unifinance`.`favoritosAcao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `unifinance`.`favoritosAcao` (
+  `idFavoritoAcao` INT(11) NOT NULL AUTO_INCREMENT,
+  `usuario_idUsuario` INT(11) NULL DEFAULT NULL,
+  `acao_idAcao` INT(11) NULL DEFAULT NULL,
+  PRIMARY KEY (`idFavoritoAcao`),
+  CONSTRAINT `favoritos_ibfk_1`
+    FOREIGN KEY (`usuario_idUsuario`)
+    REFERENCES `unifinance`.`usuario` (`idUsuario`),
+  CONSTRAINT `favoritos_ibfk_2`
+    FOREIGN KEY (`acao_idAcao`)
+    REFERENCES `unifinance`.`acao` (`idAcao`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+-- -----------------------------------------------------
+-- Table `unifinance`.`moeda`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `unifinance`.`moeda` (
+  `idMoeda` INT(11) NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) NULL DEFAULT NULL,
+  `symbol` VARCHAR(45) NULL DEFAULT NULL,
+  `buy` FLOAT NULL DEFAULT NULL,
+  `sell` FLOAT NULL DEFAULT NULL,
+  `variation` FLOAT NULL DEFAULT NULL,
+  `pctVariation` FLOAT NULL DEFAULT NULL,
+  PRIMARY KEY (`idMoeda`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 31
+DEFAULT CHARACTER SET = utf8mb4;
+
+-- -----------------------------------------------------
+-- Table `unifinance`.`favoritosMoeda`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `unifinance`.`favoritosMoeda` (
+  `idFavoritoMoeda` INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  `usuario_idUsuario` INT(11) NULL DEFAULT NULL,
+  `moeda_idMoeda` INT(11) NULL DEFAULT NULL,
+    FOREIGN KEY (`usuario_idUsuario`)
+    REFERENCES `unifinance`.`usuario` (`idUsuario`),
+    FOREIGN KEY (`moeda_idMoeda`)
+    REFERENCES `unifinance`.`moeda` (`idMoeda`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
