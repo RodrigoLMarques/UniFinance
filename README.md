@@ -6,6 +6,7 @@ Consiste em um site que auxilia o monitoramento da bolsa de valores e cotações
 ### Nesse projeto aprendi:
 - Aperfeiçoar a construção de um projeto na arquitetura MVC
 - Aperfeiçoar o uso da linguagem PHP
+- Utilizar o Boostrap
 - Consumir APIs REST de terceiros 
 
 ![Captura de tela 2022-10-20 205445](https://user-images.githubusercontent.com/102917955/222975621-d1bf3906-80b1-4f58-a34f-200003a805f8.jpg)
