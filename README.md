@@ -1,6 +1,6 @@
 # UniFinance
 
-Aplicação web desemvolvida em php para feira técnica da Univap Centro em 2022.
+Aplicação web desenvolvida em php para feira técnica da Univap Centro em 2022.
 Consiste em um site que auxilia o monitoramento da bolsa de valores e cotações de moedas, tendo também uma ferramenta de conversor de moedas.
 
 ### Nesse projeto aprendi:
